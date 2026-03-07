@@ -1,0 +1,913 @@
+
+"AMD uProf (Version:5.3.280.0)"
+PERFORMANCE ANALYSIS REPORT
+
+EXECUTION
+Target Path:,"/home/eshan/dev/js/target/release/js"
+Command Line Arguments:,"target/release/js"
+Working Directory:,"/home/eshan/dev/AMDuProf_Linux_x64_5.3.280/bin"
+Environment Variables:
+CPU Details:,"Family(0x19), Model(0x1), Number of Cores(256)"
+Operating System:,"Linux Ubuntu 24.04.1 LTS-64 Kernel:6.8.0-85-generic"
+Collect Command:,"./AMDuProfCLI collect --config hotspots -o /home/eshan/dev/sessions/ --pid 3425504"
+Report Command:,"./AMDuProfCLI report --inline --detail -g --cutoff 0 -i /home/eshan/dev/sessions/AMDuProf-Attached-Hotspots_Feb-23-2026_11-01-17"
+
+PROFILE DETAILS
+Profile Session Type:,"Hotspots"
+Profile Scope:,"Single Application"
+CPU Mask:,"0-255"
+CPU Affinity Mask:,"0-255"
+Profile Start Time:,"Mon Feb 23 11:01:17 2026"
+Profile End Time:,"Mon Feb 23 11:01:53 2026"
+Profile Duration:,"35.798 seconds"
+Data Folder:,"/home/eshan/dev/sessions/AMDuProf-Attached-Hotspots_Feb-23-2026_11-01-17"
+Virtual Machine:,"No"
+Call Stack Sampling:,"False"
+Selected View:,"Time based hotspots"
+
+MONITORED EVENTS
+TBP Events:,Name,Interval,Description
+,"CPU_TIME","10.000 milliseconds","CPU Time is the time in which the CPU core is executing the code."
+
+
+APPLICATION PERFORMANCE SNAPSHOT
+Thread Count,"1"
+
+
+"HOTTEST FUNCTIONS (Sort Event - CPU_TIME)"
+FUNCTION,"CPU_TIME" (seconds),Module
+"clear_page_erms",0.6000,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__memmove_avx_unaligned_erms",0.5800,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"_int_malloc",0.5800,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"js::tree::build_node::hdbb2a45ac53a1e33",0.5600,"/home/eshan/dev/js/target/release/js"
+"do_user_addr_fault",0.5500,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __preempt_count_dec_and_test",0.5300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_int_free",0.3600,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"_copy_to_iter",0.3200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN10serde_json5value2de82_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$11deserialize17hd109c0bc349436a1E.llvm.6089437461344032786",0.2600,"/home/eshan/dev/js/target/release/js"
+"_ZN175_$LT$serde_json..value..de..$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$..deserialize..ValueVisitor$u20$as$u20$serde_core..de..Visitor$GT$9visit_map17h31824912f20e30a0E",0.2100,"/home/eshan/dev/js/target/release/js"
+"free",0.2000,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"ratatui::buffer::buffer::Buffer::diff::h028a3dd97cd433e4",0.1700,"/home/eshan/dev/js/target/release/js"
+"malloc",0.1700,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"_ZN5alloc11collections5btree3map5entry28VacantEntry$LT$K$C$V$C$A$GT$12insert_entry17ha63e7b9d6bcc973cE",0.1700,"/home/eshan/dev/js/target/release/js"
+"serde_json::read::SliceRead::skip_to_escape::hc0e690c2e64e7ca0 (.llvm.963786366609203466)",0.1600,"/home/eshan/dev/js/target/release/js"
+"_ZN108_$LT$alloc..collections..btree..map..Iter$LT$K$C$V$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hca60d82218e49d84E",0.1600,"/home/eshan/dev/js/target/release/js"
+"mem_cgroup_commit_charge",0.1600,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN68_$LT$serde_json..read..StrRead$u20$as$u20$serde_json..read..Read$GT$9parse_str17h5f64de11181df5edE",0.1600,"/home/eshan/dev/js/target/release/js"
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4",0.1500,"/home/eshan/dev/js/target/release/js"
+"__handle_mm_fault",0.1500,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"do_anonymous_page",0.1300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc11collections5btree4node210Handle$LT$alloc..collections..btree..node..NodeRef$LT$alloc..collections..btree..node..marker..Mut$C$K$C$V$C$alloc..collections..btree..node..marker..Leaf$GT$$C$alloc..collections..btree..node..marker..Edge$GT$16insert_recursing17h11673f7a778533e1E",0.1200,"/home/eshan/dev/js/target/release/js"
+"perf_iterate_ctx",0.1200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc11collections5btree3map25BTreeMap$LT$K$C$V$C$A$GT$6insert17h853647c3ab3e1d39E",0.1100,"/home/eshan/dev/js/target/release/js"
+"_ZN5alloc11collections5btree3map25IntoIter$LT$K$C$V$C$A$GT$10dying_next17h41735d9ee89aada8E.llvm.2658051192602730804",0.1100,"/home/eshan/dev/js/target/release/js"
+"_ZN60_$LT$alloc..string..String$u20$as$u20$core..clone..Clone$GT$5clone17hecd93673a1db7defE",0.1000,"/home/eshan/dev/js/target/release/js"
+"zap_pte_range",0.0800,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"handle_pte_fault",0.0800,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__memcmp_avx2_movbe",0.0700,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"_ZN4core3ptr33drop_in_place$LT$js..app..App$GT$17hac6f50d14a7f7df2E",0.0600,"/home/eshan/dev/js/target/release/js"
+"set_ptes.isra.0",0.0600,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__rcu_read_unlock",0.0600,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN111_$LT$alloc..vec..Vec$LT$T$GT$$u20$as$u20$alloc..vec..spec_from_iter_nested..SpecFromIterNested$LT$T$C$I$GT$$GT$9from_iter17hf532e85f6911e9b7E",0.0500,"/home/eshan/dev/js/target/release/js"
+"_ZN10serde_json2de21Deserializer$LT$R$GT$13parse_integer17hccadedfb5b8cf80dE",0.0500,"/home/eshan/dev/js/target/release/js"
+"srso_alias_safe_ret",0.0500,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] memcg_rstat_updated",0.0500,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"js::tree::JsonTree::collect_visible::h6f19622b92b66357 (.llvm.1116801381122796746)",0.0400,"/home/eshan/dev/js/target/release/js"
+"__alloc_pages",0.0400,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__lruvec_stat_mod_folio",0.0400,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] mem_cgroup_lruvec",0.0400,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"get_page_from_freelist",0.0400,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN10serde_json2de21Deserializer$LT$R$GT$12parse_number17h2163e4ceef6efb67E",0.0400,"/home/eshan/dev/js/target/release/js"
+"lock_vma_under_rcu",0.0400,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"core::str::converts::from_utf8::hd4454ac14cbbb790",0.0400,"/home/eshan/dev/js/target/release/js"
+"_int_free_merge_chunk",0.0400,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"ratatui::buffer::cell::Cell::set_symbol::h1c96fa48bafb1267",0.0300,"/home/eshan/dev/js/target/release/js"
+"[inlined] event_filter_match",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__rcu_read_lock",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__mem_cgroup_charge",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] _compound_head",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN4core3fmt3num3imp21_$LT$impl$u20$u64$GT$10_fmt_inner17h8cf5f178c169705dE",0.0300,"/home/eshan/dev/js/target/release/js"
+"[inlined] mem_cgroup_from_task",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_int_free_maybe_consolidate",0.0300,"/usr/lib/x86_64-linux-gnu/libc.so.6"
+"_ZN80_$LT$serde_json..de..MapAccess$LT$R$GT$$u20$as$u20$serde_core..de..MapAccess$GT$13next_key_seed12has_next_key17h682b3ac4327e7637E.llvm.6089437461344032786",0.0300,"/home/eshan/dev/js/target/release/js"
+"_RNvCshXwFllX56pT_7___rustc35___rust_no_alloc_shim_is_unstable_v2",0.0300,"/home/eshan/dev/js/target/release/js"
+"[inlined] arch_atomic_try_cmpxchg",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN4core3ptr45drop_in_place$LT$serde_json..value..Value$GT$17h2797f972acfc5086E.llvm.2658051192602730804",0.0300,"/home/eshan/dev/js/target/release/js"
+"free_unref_page_list",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"cgroup_rstat_updated",0.0300,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"get_pfnblock_flags_mask",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17ha38825392b5d2954E",0.0200,"/home/eshan/dev/js/target/release/js"
+"percpu_counter_add_batch",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN38_$LT$u64$u20$as$u20$itoa..Unsigned$GT$3fmt17hb77982d20e205980E",0.0200,"/home/eshan/dev/js/target/release/js"
+"[inlined] sanitize_fault_flags",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"try_charge_memcg",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"folio_add_new_anon_rmap",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"alloc_pages_mpol",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"task_mm_cid_work",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] vma_pkey",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] arch_local_save_flags",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] rcu_read_unlock",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __folio_remove_rmap",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] vma_is_foreign",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN4core3ptr117drop_in_place$LT$alloc..collections..btree..map..IntoIter$LT$alloc..string..String$C$serde_json..value..Value$GT$$GT$17h0961f861ae84466eE.llvm.2658051192602730804",0.0200,"/home/eshan/dev/js/target/release/js"
+"vma_alloc_folio",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"uncharge_folio",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"free_pages_and_swap_cache",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"count_memcg_events.constprop.0",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__mod_memcg_lruvec_state",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] _compound_head",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__mod_node_page_state",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"filemap_get_read_batch",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_RNvCshXwFllX56pT_7___rustc12___rust_alloc",0.0200,"/home/eshan/dev/js/target/release/js"
+"ratatui::buffer::buffer::Buffer::set_style::h02b70b5833d9f911",0.0200,"/home/eshan/dev/js/target/release/js"
+"_ZN100_$LT$unicode_segmentation..grapheme..Graphemes$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hc4c0f2218d06acf0E",0.0200,"/home/eshan/dev/js/target/release/js"
+"handle_mm_fault",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN10serde_core2de5impls79_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$alloc..string..String$GT$11deserialize17h0be7c5d316d557afE",0.0200,"/home/eshan/dev/js/target/release/js"
+"kthread_blkcg",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_raw_spin_unlock",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"pmd_val",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$8grow_one17h26f29e4b20530ce4E",0.0200,"/home/eshan/dev/js/target/release/js"
+"[inlined] get_current",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] folio_batch_add_and_move",0.0200,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] arch_atomic_read",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"rmqueue",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"folio_add_lru_vma",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"path_get",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"unicode_width::tables::lookup_width::ha5a6b17c4e5b66d9",0.0100,"/home/eshan/dev/js/target/release/js"
+"finish_task_switch.isra.0",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"tty_release_checks",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"blk_cgroup_congested",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN86_$LT$ratatui..widgets..paragraph..Paragraph$u20$as$u20$ratatui..widgets..WidgetRef$GT$10render_ref17h8d2a10970806353cE",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] mas_start",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"get_mem_cgroup_from_mm",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h118026cd8718437aE.llvm.14796116808809185035",0.0100,"/home/eshan/dev/js/target/release/js"
+"_ZN4core3fmt3num3imp23_$LT$impl$u20$usize$GT$4_fmt17hd8e96676f14e1471E",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] count_memcg_event_mm",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN57_$LT$core..fmt..Formatter$u20$as$u20$core..fmt..Write$GT$9write_str17hef7ec55fc0bf44c4E",0.0100,"/home/eshan/dev/js/target/release/js"
+"folio_add_lru",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] task_css",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"mas_update_gap.part.0",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__folio_throttle_swaprate",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] rcu_read_lock",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] arch_local_save_flags",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__rmqueue_pcplist",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_raw_spin_unlock_irqrestore",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] pte_val",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN65_$LT$serde_json..number..Number$u20$as$u20$core..fmt..Display$GT$3fmt17h7e49097a308797d1E",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] xa_is_node",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] arch_atomic64_add_return",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] get_current",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN102_$LT$core..iter..adapters..map..Map$LT$I$C$F$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4fold17h922b5015e378de3eE",0.0100,"/home/eshan/dev/js/target/release/js"
+"js::ui::render_node::h6c2eb4dae4adc3c4",0.0100,"/home/eshan/dev/js/target/release/js"
+"alloc::fmt::format::format_inner::hba4b3cca2f59bbe0",0.0100,"/home/eshan/dev/js/target/release/js"
+"do_brk_flags",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"queue_work_on",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __ref_is_percpu",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_RNvCshXwFllX56pT_7___rustc13___rdl_dealloc",0.0100,"/home/eshan/dev/js/target/release/js"
+"mas_prev",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] mm_trace_rss_stat",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __folio_memcg",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] pte_mksaveddirty",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] lru_gen_exit_fault",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"free_unref_page_prepare",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] do_pte_missing",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h300a142e9c5ae877E",0.0100,"/home/eshan/dev/js/target/release/js"
+"pte_mkwrite",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __pte_needs_invert",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN45_$LT$f64$u20$as$u20$zmij..private..Sealed$GT$20write_to_zmij_buffer17ha88a8ba49b7cf853E",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] mpol_needs_cond_ref",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] xa_is_internal",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"mem_cgroup_from_task",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h408a8b4419c06d04E.llvm.5620721052511438877",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] css_get",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] mm_account_fault",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_ZN3lru25LruCache$LT$K$C$V$C$S$GT$13get_or_insert17ha8ea68de66efd6d7E",0.0100,"/home/eshan/dev/js/target/release/js"
+"ratatui::buffer::buffer::Buffer::reset::ha12ed4821e9821c5",0.0100,"/home/eshan/dev/js/target/release/js"
+"pud_val",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] pmd_present",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"policy_nodemask",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4",0.0100,"/home/eshan/dev/js/target/release/js"
+"srso_alias_return_thunk",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"pte_offset_map_nolock",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] task_css",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"_RNvCshXwFllX56pT_7___rustc11___rdl_alloc",0.0100,"/home/eshan/dev/js/target/release/js"
+"[inlined] rcu_read_unlock",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] ma_data_end",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] arch_static_branch",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __first_node",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"move_ptes.isra.0",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] folio_set_active",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"change_pte_range",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] vma_is_foreign",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"perf_event_mmap_event",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"alloc_anon_folio",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"__mod_lruvec_state",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+"[inlined] __nr_to_section",0.0100,"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic"
+
+"HOTTEST PROCESSES (Sort Event - CPU_TIME)"
+PROCESS,"CPU_TIME" (seconds)
+"/home/eshan/dev/js/target/release/js (PID:3425504)",9.7000
+
+"HOTTEST MODULES (Sort Event - CPU_TIME)"
+MODULE,"CPU_TIME" (seconds)
+"/usr/lib/debug/boot/vmlinux-6.8.0-85-generic",4.4700
+"/home/eshan/dev/js/target/release/js",3.2000
+"/usr/lib/x86_64-linux-gnu/libc.so.6",2.0300
+
+"HOTTEST THREADS (Sort Event - CPU_TIME)"
+THREAD,"CPU_TIME" (seconds),THREAD ID
+"js (PID:3425504)",9.7000,"3425504"
+
+"ALL PROCESSES (Sort Event - CPU_TIME)"
+PROCESS,"CPU_TIME" (seconds)
+"/home/eshan/dev/js/target/release/js (PID:3425504)",9.7000
+
+
+PROFILE REPORT FOR PROCESS - /home/eshan/dev/js/target/release/js (PID:3425504)
+PROCESS,"CPU_TIME" (seconds)
+"/home/eshan/dev/js/target/release/js (PID:3425504)",9.7000
+
+THREAD SUMMARY
+THREAD,"CPU_TIME" (seconds),THREAD ID
+"js (PID:3425504)",9.7000,"3425504"
+
+
+MODULE SUMMARY
+MODULE,"CPU_TIME" (seconds)
+/usr/lib/debug/boot/vmlinux-6.8.0-85-generic,4.4700
+/home/eshan/dev/js/target/release/js,3.2000
+/usr/lib/x86_64-linux-gnu/libc.so.6,2.0300
+
+
+FUNCTION SUMMARY
+FUNCTION,"CPU_TIME" (seconds),MODULE
+"clear_page_erms",0.6000,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_int_malloc",0.5800,/usr/lib/x86_64-linux-gnu/libc.so.6
+"__memmove_avx_unaligned_erms",0.5800,/usr/lib/x86_64-linux-gnu/libc.so.6
+"js::tree::build_node::hdbb2a45ac53a1e33",0.5600,/home/eshan/dev/js/target/release/js
+"do_user_addr_fault",0.5500,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __preempt_count_dec_and_test",0.5300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_int_free",0.3600,/usr/lib/x86_64-linux-gnu/libc.so.6
+"_copy_to_iter",0.3200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN10serde_json5value2de82_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$11deserialize17hd109c0bc349436a1E.llvm.6089437461344032786",0.2600,/home/eshan/dev/js/target/release/js
+"_ZN175_$LT$serde_json..value..de..$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$..deserialize..ValueVisitor$u20$as$u20$serde_core..de..Visitor$GT$9visit_map17h31824912f20e30a0E",0.2100,/home/eshan/dev/js/target/release/js
+"free",0.2000,/usr/lib/x86_64-linux-gnu/libc.so.6
+"ratatui::buffer::buffer::Buffer::diff::h028a3dd97cd433e4",0.1700,/home/eshan/dev/js/target/release/js
+"malloc",0.1700,/usr/lib/x86_64-linux-gnu/libc.so.6
+"_ZN5alloc11collections5btree3map5entry28VacantEntry$LT$K$C$V$C$A$GT$12insert_entry17ha63e7b9d6bcc973cE",0.1700,/home/eshan/dev/js/target/release/js
+"_ZN68_$LT$serde_json..read..StrRead$u20$as$u20$serde_json..read..Read$GT$9parse_str17h5f64de11181df5edE",0.1600,/home/eshan/dev/js/target/release/js
+"mem_cgroup_commit_charge",0.1600,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN108_$LT$alloc..collections..btree..map..Iter$LT$K$C$V$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hca60d82218e49d84E",0.1600,/home/eshan/dev/js/target/release/js
+"serde_json::read::SliceRead::skip_to_escape::hc0e690c2e64e7ca0 (.llvm.963786366609203466)",0.1600,/home/eshan/dev/js/target/release/js
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4",0.1500,/home/eshan/dev/js/target/release/js
+"__handle_mm_fault",0.1500,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"do_anonymous_page",0.1300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"perf_iterate_ctx",0.1200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN5alloc11collections5btree4node210Handle$LT$alloc..collections..btree..node..NodeRef$LT$alloc..collections..btree..node..marker..Mut$C$K$C$V$C$alloc..collections..btree..node..marker..Leaf$GT$$C$alloc..collections..btree..node..marker..Edge$GT$16insert_recursing17h11673f7a778533e1E",0.1200,/home/eshan/dev/js/target/release/js
+"_ZN5alloc11collections5btree3map25IntoIter$LT$K$C$V$C$A$GT$10dying_next17h41735d9ee89aada8E.llvm.2658051192602730804",0.1100,/home/eshan/dev/js/target/release/js
+"_ZN5alloc11collections5btree3map25BTreeMap$LT$K$C$V$C$A$GT$6insert17h853647c3ab3e1d39E",0.1100,/home/eshan/dev/js/target/release/js
+"_ZN60_$LT$alloc..string..String$u20$as$u20$core..clone..Clone$GT$5clone17hecd93673a1db7defE",0.1000,/home/eshan/dev/js/target/release/js
+"handle_pte_fault",0.0800,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"zap_pte_range",0.0800,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__memcmp_avx2_movbe",0.0700,/usr/lib/x86_64-linux-gnu/libc.so.6
+"__rcu_read_unlock",0.0600,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN4core3ptr33drop_in_place$LT$js..app..App$GT$17hac6f50d14a7f7df2E",0.0600,/home/eshan/dev/js/target/release/js
+"set_ptes.isra.0",0.0600,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN111_$LT$alloc..vec..Vec$LT$T$GT$$u20$as$u20$alloc..vec..spec_from_iter_nested..SpecFromIterNested$LT$T$C$I$GT$$GT$9from_iter17hf532e85f6911e9b7E",0.0500,/home/eshan/dev/js/target/release/js
+"srso_alias_safe_ret",0.0500,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] memcg_rstat_updated",0.0500,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN10serde_json2de21Deserializer$LT$R$GT$13parse_integer17hccadedfb5b8cf80dE",0.0500,/home/eshan/dev/js/target/release/js
+"js::tree::JsonTree::collect_visible::h6f19622b92b66357 (.llvm.1116801381122796746)",0.0400,/home/eshan/dev/js/target/release/js
+"__lruvec_stat_mod_folio",0.0400,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_int_free_merge_chunk",0.0400,/usr/lib/x86_64-linux-gnu/libc.so.6
+"_ZN10serde_json2de21Deserializer$LT$R$GT$12parse_number17h2163e4ceef6efb67E",0.0400,/home/eshan/dev/js/target/release/js
+"get_page_from_freelist",0.0400,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"lock_vma_under_rcu",0.0400,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__alloc_pages",0.0400,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"core::str::converts::from_utf8::hd4454ac14cbbb790",0.0400,/home/eshan/dev/js/target/release/js
+"[inlined] mem_cgroup_lruvec",0.0400,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN4core3ptr45drop_in_place$LT$serde_json..value..Value$GT$17h2797f972acfc5086E.llvm.2658051192602730804",0.0300,/home/eshan/dev/js/target/release/js
+"cgroup_rstat_updated",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"free_unref_page_list",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"ratatui::buffer::cell::Cell::set_symbol::h1c96fa48bafb1267",0.0300,/home/eshan/dev/js/target/release/js
+"[inlined] arch_atomic_try_cmpxchg",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__rcu_read_lock",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] event_filter_match",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__mem_cgroup_charge",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] _compound_head",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN4core3fmt3num3imp21_$LT$impl$u20$u64$GT$10_fmt_inner17h8cf5f178c169705dE",0.0300,/home/eshan/dev/js/target/release/js
+"[inlined] mem_cgroup_from_task",0.0300,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_int_free_maybe_consolidate",0.0300,/usr/lib/x86_64-linux-gnu/libc.so.6
+"_ZN80_$LT$serde_json..de..MapAccess$LT$R$GT$$u20$as$u20$serde_core..de..MapAccess$GT$13next_key_seed12has_next_key17h682b3ac4327e7637E.llvm.6089437461344032786",0.0300,/home/eshan/dev/js/target/release/js
+"_RNvCshXwFllX56pT_7___rustc35___rust_no_alloc_shim_is_unstable_v2",0.0300,/home/eshan/dev/js/target/release/js
+"[inlined] folio_batch_add_and_move",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"folio_add_new_anon_rmap",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] vma_pkey",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"percpu_counter_add_batch",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"count_memcg_events.constprop.0",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] get_current",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$8grow_one17h26f29e4b20530ce4E",0.0200,/home/eshan/dev/js/target/release/js
+"pmd_val",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] arch_local_save_flags",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] _compound_head",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"get_pfnblock_flags_mask",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"free_pages_and_swap_cache",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] vma_is_foreign",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] sanitize_fault_flags",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"try_charge_memcg",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"alloc_pages_mpol",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__mod_memcg_lruvec_state",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"uncharge_folio",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN4core3ptr117drop_in_place$LT$alloc..collections..btree..map..IntoIter$LT$alloc..string..String$C$serde_json..value..Value$GT$$GT$17h0961f861ae84466eE.llvm.2658051192602730804",0.0200,/home/eshan/dev/js/target/release/js
+"_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17ha38825392b5d2954E",0.0200,/home/eshan/dev/js/target/release/js
+"[inlined] __folio_remove_rmap",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN38_$LT$u64$u20$as$u20$itoa..Unsigned$GT$3fmt17hb77982d20e205980E",0.0200,/home/eshan/dev/js/target/release/js
+"vma_alloc_folio",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] rcu_read_unlock",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"task_mm_cid_work",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__mod_node_page_state",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"filemap_get_read_batch",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_RNvCshXwFllX56pT_7___rustc12___rust_alloc",0.0200,/home/eshan/dev/js/target/release/js
+"ratatui::buffer::buffer::Buffer::set_style::h02b70b5833d9f911",0.0200,/home/eshan/dev/js/target/release/js
+"_ZN100_$LT$unicode_segmentation..grapheme..Graphemes$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hc4c0f2218d06acf0E",0.0200,/home/eshan/dev/js/target/release/js
+"handle_mm_fault",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN10serde_core2de5impls79_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$alloc..string..String$GT$11deserialize17h0be7c5d316d557afE",0.0200,/home/eshan/dev/js/target/release/js
+"kthread_blkcg",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_raw_spin_unlock",0.0200,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] task_css",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __nr_to_section",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __ref_is_percpu",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"mas_prev",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__mod_lruvec_state",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] mm_trace_rss_stat",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] pte_mksaveddirty",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] arch_atomic_read",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] arch_local_save_flags",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] lru_gen_exit_fault",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_raw_spin_unlock_irqrestore",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] xa_is_node",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"folio_add_lru_vma",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"do_brk_flags",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__folio_throttle_swaprate",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h300a142e9c5ae877E",0.0100,/home/eshan/dev/js/target/release/js
+"unicode_width::tables::lookup_width::ha5a6b17c4e5b66d9",0.0100,/home/eshan/dev/js/target/release/js
+"alloc_anon_folio",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] task_css",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] vma_is_foreign",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"perf_event_mmap_event",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] folio_set_active",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"change_pte_range",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"finish_task_switch.isra.0",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] do_pte_missing",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_RNvCshXwFllX56pT_7___rustc11___rdl_alloc",0.0100,/home/eshan/dev/js/target/release/js
+"[inlined] rcu_read_unlock",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] ma_data_end",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] arch_static_branch",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __first_node",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"move_ptes.isra.0",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"tty_release_checks",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN86_$LT$ratatui..widgets..paragraph..Paragraph$u20$as$u20$ratatui..widgets..WidgetRef$GT$10render_ref17h8d2a10970806353cE",0.0100,/home/eshan/dev/js/target/release/js
+"get_mem_cgroup_from_mm",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"queue_work_on",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN4core3fmt3num3imp23_$LT$impl$u20$usize$GT$4_fmt17hd8e96676f14e1471E",0.0100,/home/eshan/dev/js/target/release/js
+"_ZN57_$LT$core..fmt..Formatter$u20$as$u20$core..fmt..Write$GT$9write_str17hef7ec55fc0bf44c4E",0.0100,/home/eshan/dev/js/target/release/js
+"path_get",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h118026cd8718437aE.llvm.14796116808809185035",0.0100,/home/eshan/dev/js/target/release/js
+"_ZN65_$LT$serde_json..number..Number$u20$as$u20$core..fmt..Display$GT$3fmt17h7e49097a308797d1E",0.0100,/home/eshan/dev/js/target/release/js
+"[inlined] arch_atomic64_add_return",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] get_current",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN102_$LT$core..iter..adapters..map..Map$LT$I$C$F$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4fold17h922b5015e378de3eE",0.0100,/home/eshan/dev/js/target/release/js
+"js::ui::render_node::h6c2eb4dae4adc3c4",0.0100,/home/eshan/dev/js/target/release/js
+"alloc::fmt::format::format_inner::hba4b3cca2f59bbe0",0.0100,/home/eshan/dev/js/target/release/js
+"folio_add_lru",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] mas_start",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"rmqueue",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_RNvCshXwFllX56pT_7___rustc13___rdl_dealloc",0.0100,/home/eshan/dev/js/target/release/js
+"blk_cgroup_congested",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"__rmqueue_pcplist",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __folio_memcg",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] rcu_read_lock",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"mas_update_gap.part.0",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"free_unref_page_prepare",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] count_memcg_event_mm",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] pte_val",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"pte_mkwrite",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] __pte_needs_invert",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN45_$LT$f64$u20$as$u20$zmij..private..Sealed$GT$20write_to_zmij_buffer17ha88a8ba49b7cf853E",0.0100,/home/eshan/dev/js/target/release/js
+"[inlined] mpol_needs_cond_ref",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] xa_is_internal",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"mem_cgroup_from_task",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h408a8b4419c06d04E.llvm.5620721052511438877",0.0100,/home/eshan/dev/js/target/release/js
+"[inlined] css_get",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] mm_account_fault",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"_ZN3lru25LruCache$LT$K$C$V$C$S$GT$13get_or_insert17ha8ea68de66efd6d7E",0.0100,/home/eshan/dev/js/target/release/js
+"ratatui::buffer::buffer::Buffer::reset::ha12ed4821e9821c5",0.0100,/home/eshan/dev/js/target/release/js
+"pud_val",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"[inlined] pmd_present",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"policy_nodemask",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4",0.0100,/home/eshan/dev/js/target/release/js
+"srso_alias_return_thunk",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+"pte_offset_map_nolock",0.0100,/usr/lib/debug/boot/vmlinux-6.8.0-85-generic
+
+Function Detail Data
+Function,"CPU_TIME" (seconds)
+"clear_page_erms" (SYSTEM MODULE FUNCTION),0.6000
+
+Function,"CPU_TIME" (seconds)
+"_int_malloc" (SYSTEM MODULE FUNCTION),0.5800
+
+Function,"CPU_TIME" (seconds)
+"__memmove_avx_unaligned_erms" (SYSTEM MODULE FUNCTION),0.5800
+
+Function,"CPU_TIME" (seconds)
+"js::tree::build_node::hdbb2a45ac53a1e33" (DEBUG INFO NOT FOUND),0.5600
+
+Function,"CPU_TIME" (seconds)
+"do_user_addr_fault" (SYSTEM MODULE FUNCTION),0.5500
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __preempt_count_dec_and_test" (SYSTEM MODULE FUNCTION),0.5300
+
+Function,"CPU_TIME" (seconds)
+"_int_free" (SYSTEM MODULE FUNCTION),0.3600
+
+Function,"CPU_TIME" (seconds)
+"_copy_to_iter" (SYSTEM MODULE FUNCTION),0.3200
+
+Function,"CPU_TIME" (seconds)
+"_ZN10serde_json5value2de82_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$11deserialize17hd109c0bc349436a1E.llvm.6089437461344032786" (DEBUG INFO NOT FOUND),0.2600
+
+Function,"CPU_TIME" (seconds)
+"_ZN175_$LT$serde_json..value..de..$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$serde_json..value..Value$GT$..deserialize..ValueVisitor$u20$as$u20$serde_core..de..Visitor$GT$9visit_map17h31824912f20e30a0E" (DEBUG INFO NOT FOUND),0.2100
+
+Function,"CPU_TIME" (seconds)
+"free" (SYSTEM MODULE FUNCTION),0.2000
+
+Function,"CPU_TIME" (seconds)
+"ratatui::buffer::buffer::Buffer::diff::h028a3dd97cd433e4" (DEBUG INFO NOT FOUND),0.1700
+
+Function,"CPU_TIME" (seconds)
+"malloc" (SYSTEM MODULE FUNCTION),0.1700
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc11collections5btree3map5entry28VacantEntry$LT$K$C$V$C$A$GT$12insert_entry17ha63e7b9d6bcc973cE" (DEBUG INFO NOT FOUND),0.1700
+
+Function,"CPU_TIME" (seconds)
+"_ZN68_$LT$serde_json..read..StrRead$u20$as$u20$serde_json..read..Read$GT$9parse_str17h5f64de11181df5edE" (DEBUG INFO NOT FOUND),0.1600
+
+Function,"CPU_TIME" (seconds)
+"mem_cgroup_commit_charge" (SYSTEM MODULE FUNCTION),0.1600
+
+Function,"CPU_TIME" (seconds)
+"_ZN108_$LT$alloc..collections..btree..map..Iter$LT$K$C$V$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hca60d82218e49d84E" (DEBUG INFO NOT FOUND),0.1600
+
+Function,"CPU_TIME" (seconds)
+"serde_json::read::SliceRead::skip_to_escape::hc0e690c2e64e7ca0 (.llvm.963786366609203466)" (DEBUG INFO NOT FOUND),0.1600
+
+Function,"CPU_TIME" (seconds)
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4" (DEBUG INFO NOT FOUND),0.1500
+
+Function,"CPU_TIME" (seconds)
+"__handle_mm_fault" (SYSTEM MODULE FUNCTION),0.1500
+
+Function,"CPU_TIME" (seconds)
+"do_anonymous_page" (SYSTEM MODULE FUNCTION),0.1300
+
+Function,"CPU_TIME" (seconds)
+"perf_iterate_ctx" (SYSTEM MODULE FUNCTION),0.1200
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc11collections5btree4node210Handle$LT$alloc..collections..btree..node..NodeRef$LT$alloc..collections..btree..node..marker..Mut$C$K$C$V$C$alloc..collections..btree..node..marker..Leaf$GT$$C$alloc..collections..btree..node..marker..Edge$GT$16insert_recursing17h11673f7a778533e1E" (DEBUG INFO NOT FOUND),0.1200
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc11collections5btree3map25IntoIter$LT$K$C$V$C$A$GT$10dying_next17h41735d9ee89aada8E.llvm.2658051192602730804" (DEBUG INFO NOT FOUND),0.1100
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc11collections5btree3map25BTreeMap$LT$K$C$V$C$A$GT$6insert17h853647c3ab3e1d39E" (DEBUG INFO NOT FOUND),0.1100
+
+Function,"CPU_TIME" (seconds)
+"_ZN60_$LT$alloc..string..String$u20$as$u20$core..clone..Clone$GT$5clone17hecd93673a1db7defE" (DEBUG INFO NOT FOUND),0.1000
+
+Function,"CPU_TIME" (seconds)
+"handle_pte_fault" (SYSTEM MODULE FUNCTION),0.0800
+
+Function,"CPU_TIME" (seconds)
+"zap_pte_range" (SYSTEM MODULE FUNCTION),0.0800
+
+Function,"CPU_TIME" (seconds)
+"__memcmp_avx2_movbe" (SYSTEM MODULE FUNCTION),0.0700
+
+Function,"CPU_TIME" (seconds)
+"__rcu_read_unlock" (SYSTEM MODULE FUNCTION),0.0600
+
+Function,"CPU_TIME" (seconds)
+"_ZN4core3ptr33drop_in_place$LT$js..app..App$GT$17hac6f50d14a7f7df2E" (DEBUG INFO NOT FOUND),0.0600
+
+Function,"CPU_TIME" (seconds)
+"set_ptes.isra.0" (SYSTEM MODULE FUNCTION),0.0600
+
+Function,"CPU_TIME" (seconds)
+"_ZN111_$LT$alloc..vec..Vec$LT$T$GT$$u20$as$u20$alloc..vec..spec_from_iter_nested..SpecFromIterNested$LT$T$C$I$GT$$GT$9from_iter17hf532e85f6911e9b7E" (DEBUG INFO NOT FOUND),0.0500
+
+Function,"CPU_TIME" (seconds)
+"srso_alias_safe_ret" (SYSTEM MODULE FUNCTION),0.0500
+
+Function,"CPU_TIME" (seconds)
+"[inlined] memcg_rstat_updated" (SYSTEM MODULE FUNCTION),0.0500
+
+Function,"CPU_TIME" (seconds)
+"_ZN10serde_json2de21Deserializer$LT$R$GT$13parse_integer17hccadedfb5b8cf80dE" (DEBUG INFO NOT FOUND),0.0500
+
+Function,"CPU_TIME" (seconds)
+"js::tree::JsonTree::collect_visible::h6f19622b92b66357 (.llvm.1116801381122796746)" (DEBUG INFO NOT FOUND),0.0400
+
+Function,"CPU_TIME" (seconds)
+"__lruvec_stat_mod_folio" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"_int_free_merge_chunk" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"_ZN10serde_json2de21Deserializer$LT$R$GT$12parse_number17h2163e4ceef6efb67E" (DEBUG INFO NOT FOUND),0.0400
+
+Function,"CPU_TIME" (seconds)
+"get_page_from_freelist" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"lock_vma_under_rcu" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"__alloc_pages" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"core::str::converts::from_utf8::hd4454ac14cbbb790" (DEBUG INFO NOT FOUND),0.0400
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mem_cgroup_lruvec" (SYSTEM MODULE FUNCTION),0.0400
+
+Function,"CPU_TIME" (seconds)
+"_ZN4core3ptr45drop_in_place$LT$serde_json..value..Value$GT$17h2797f972acfc5086E.llvm.2658051192602730804" (DEBUG INFO NOT FOUND),0.0300
+
+Function,"CPU_TIME" (seconds)
+"cgroup_rstat_updated" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"free_unref_page_list" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"ratatui::buffer::cell::Cell::set_symbol::h1c96fa48bafb1267" (DEBUG INFO NOT FOUND),0.0300
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_atomic_try_cmpxchg" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"__rcu_read_lock" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"[inlined] event_filter_match" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"__mem_cgroup_charge" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"[inlined] _compound_head" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"_ZN4core3fmt3num3imp21_$LT$impl$u20$u64$GT$10_fmt_inner17h8cf5f178c169705dE" (DEBUG INFO NOT FOUND),0.0300
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mem_cgroup_from_task" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"_int_free_maybe_consolidate" (SYSTEM MODULE FUNCTION),0.0300
+
+Function,"CPU_TIME" (seconds)
+"_ZN80_$LT$serde_json..de..MapAccess$LT$R$GT$$u20$as$u20$serde_core..de..MapAccess$GT$13next_key_seed12has_next_key17h682b3ac4327e7637E.llvm.6089437461344032786" (DEBUG INFO NOT FOUND),0.0300
+
+Function,"CPU_TIME" (seconds)
+"_RNvCshXwFllX56pT_7___rustc35___rust_no_alloc_shim_is_unstable_v2" (DEBUG INFO NOT FOUND),0.0300
+
+Function,"CPU_TIME" (seconds)
+"[inlined] folio_batch_add_and_move" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"folio_add_new_anon_rmap" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] vma_pkey" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"percpu_counter_add_batch" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"count_memcg_events.constprop.0" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] get_current" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$8grow_one17h26f29e4b20530ce4E" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"pmd_val" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_local_save_flags" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] _compound_head" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"get_pfnblock_flags_mask" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"free_pages_and_swap_cache" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] vma_is_foreign" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] sanitize_fault_flags" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"try_charge_memcg" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"alloc_pages_mpol" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"__mod_memcg_lruvec_state" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"uncharge_folio" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN4core3ptr117drop_in_place$LT$alloc..collections..btree..map..IntoIter$LT$alloc..string..String$C$serde_json..value..Value$GT$$GT$17h0961f861ae84466eE.llvm.2658051192602730804" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN58_$LT$alloc..string..String$u20$as$u20$core..fmt..Write$GT$9write_str17ha38825392b5d2954E" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __folio_remove_rmap" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN38_$LT$u64$u20$as$u20$itoa..Unsigned$GT$3fmt17hb77982d20e205980E" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"vma_alloc_folio" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] rcu_read_unlock" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"task_mm_cid_work" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"__mod_node_page_state" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"filemap_get_read_batch" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_RNvCshXwFllX56pT_7___rustc12___rust_alloc" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"ratatui::buffer::buffer::Buffer::set_style::h02b70b5833d9f911" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN100_$LT$unicode_segmentation..grapheme..Graphemes$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hc4c0f2218d06acf0E" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"handle_mm_fault" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_ZN10serde_core2de5impls79_$LT$impl$u20$serde_core..de..Deserialize$u20$for$u20$alloc..string..String$GT$11deserialize17h0be7c5d316d557afE" (DEBUG INFO NOT FOUND),0.0200
+
+Function,"CPU_TIME" (seconds)
+"kthread_blkcg" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"_raw_spin_unlock" (SYSTEM MODULE FUNCTION),0.0200
+
+Function,"CPU_TIME" (seconds)
+"[inlined] task_css" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __nr_to_section" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __ref_is_percpu" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"mas_prev" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"__mod_lruvec_state" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mm_trace_rss_stat" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] pte_mksaveddirty" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_atomic_read" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_local_save_flags" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] lru_gen_exit_fault" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_raw_spin_unlock_irqrestore" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] xa_is_node" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"folio_add_lru_vma" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"do_brk_flags" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"__folio_throttle_swaprate" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h300a142e9c5ae877E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"unicode_width::tables::lookup_width::ha5a6b17c4e5b66d9" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"alloc_anon_folio" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] task_css" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] vma_is_foreign" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"perf_event_mmap_event" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] folio_set_active" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"change_pte_range" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"finish_task_switch.isra.0" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] do_pte_missing" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_RNvCshXwFllX56pT_7___rustc11___rdl_alloc" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] rcu_read_unlock" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] ma_data_end" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_static_branch" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __first_node" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"move_ptes.isra.0" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"tty_release_checks" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN86_$LT$ratatui..widgets..paragraph..Paragraph$u20$as$u20$ratatui..widgets..WidgetRef$GT$10render_ref17h8d2a10970806353cE" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"get_mem_cgroup_from_mm" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"queue_work_on" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN4core3fmt3num3imp23_$LT$impl$u20$usize$GT$4_fmt17hd8e96676f14e1471E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN57_$LT$core..fmt..Formatter$u20$as$u20$core..fmt..Write$GT$9write_str17hef7ec55fc0bf44c4E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"path_get" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h118026cd8718437aE.llvm.14796116808809185035" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN65_$LT$serde_json..number..Number$u20$as$u20$core..fmt..Display$GT$3fmt17h7e49097a308797d1E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] arch_atomic64_add_return" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] get_current" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN102_$LT$core..iter..adapters..map..Map$LT$I$C$F$GT$$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4fold17h922b5015e378de3eE" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"js::ui::render_node::h6c2eb4dae4adc3c4" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"alloc::fmt::format::format_inner::hba4b3cca2f59bbe0" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"folio_add_lru" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mas_start" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"rmqueue" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_RNvCshXwFllX56pT_7___rustc13___rdl_dealloc" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"blk_cgroup_congested" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"__rmqueue_pcplist" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __folio_memcg" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] rcu_read_lock" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"mas_update_gap.part.0" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"free_unref_page_prepare" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] count_memcg_event_mm" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] pte_val" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"pte_mkwrite" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] __pte_needs_invert" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN45_$LT$f64$u20$as$u20$zmij..private..Sealed$GT$20write_to_zmij_buffer17ha88a8ba49b7cf853E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mpol_needs_cond_ref" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] xa_is_internal" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"mem_cgroup_from_task" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN5alloc7raw_vec20RawVecInner$LT$A$GT$11finish_grow17h408a8b4419c06d04E.llvm.5620721052511438877" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] css_get" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] mm_account_fault" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"_ZN3lru25LruCache$LT$K$C$V$C$S$GT$13get_or_insert17ha8ea68de66efd6d7E" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"ratatui::buffer::buffer::Buffer::reset::ha12ed4821e9821c5" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"pud_val" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"[inlined] pmd_present" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"policy_nodemask" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"core::iter::traits::double_ended::DoubleEndedIterator::rfold::h6d0a02b6915908d4" (DEBUG INFO NOT FOUND),0.0100
+
+Function,"CPU_TIME" (seconds)
+"srso_alias_return_thunk" (SYSTEM MODULE FUNCTION),0.0100
+
+Function,"CPU_TIME" (seconds)
+"pte_offset_map_nolock" (SYSTEM MODULE FUNCTION),0.0100
+
