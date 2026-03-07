@@ -2,6 +2,9 @@
 
 A terminal-based interactive JSON viewer built with Rust and [ratatui](https://github.com/ratatui/ratatui).
 
+![Rust](https://img.shields.io/badge/Rust-2024-orange)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ## Usage
 
 ```sh
@@ -28,25 +31,25 @@ js
 
 ## Keybindings
 
-| Key | Action |
-|-----|--------|
-| `j` / `↓` | Move down |
-| `k` / `↑` | Move up |
-| `h` / `←` | Collapse node / go to parent |
-| `l` / `→` / `Enter` | Expand / toggle node |
-| `g` | Go to top |
-| `G` | Go to bottom |
-| `f` / `PageDown` | Page down |
-| `b` / `PageUp` | Page up |
-| `e` | Expand all nodes |
-| `c` | Collapse all nodes |
-| `1`–`9` | Expand to depth N |
-| `/` | Search |
-| `n` / `N` | Next / previous search match |
-| `y` | Copy value to clipboard |
-| `Y` | Copy path to clipboard |
-| `?` | Toggle help popup |
-| `q` / `Esc` | Quit |
+| Key                 | Action                       |
+| ------------------- | ---------------------------- |
+| `j` / `↓`           | Move down                    |
+| `k` / `↑`           | Move up                      |
+| `h` / `←`           | Collapse node / go to parent |
+| `l` / `→` / `Enter` | Expand / toggle node         |
+| `g`                 | Go to top                    |
+| `G`                 | Go to bottom                 |
+| `f` / `PageDown`    | Page down                    |
+| `b` / `PageUp`      | Page up                      |
+| `e`                 | Expand all nodes             |
+| `c`                 | Collapse all nodes           |
+| `1`–`9`             | Expand to depth N            |
+| `/`                 | Search                       |
+| `n` / `N`           | Next / previous search match |
+| `y`                 | Copy value to clipboard      |
+| `Y`                 | Copy path to clipboard       |
+| `?`                 | Toggle help popup            |
+| `q` / `Esc`         | Quit                         |
 
 ## Building
 
