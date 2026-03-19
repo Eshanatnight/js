@@ -39,7 +39,7 @@ pub struct FilePicker {
 impl FilePicker {
     pub fn new() -> Self {
         let cwd = env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
-        let mut picker = FilePicker {
+        let mut picker = Self {
             cwd,
             entries: Vec::new(),
             cursor: 0,
@@ -71,12 +71,17 @@ impl FilePicker {
                         is_dir: true,
                         path,
                     });
-                } else if name.ends_with(".json") {
+                } else if Path::new(&name)
+                    .extension()
+                    .is_some_and(|ext| ext.eq_ignore_ascii_case("json"))
+                {
                     files.push(Entry {
                         name,
                         is_dir: false,
                         path,
                     });
+                } else {
+                    // Skip non-JSON files
                 }
             }
         }
@@ -263,7 +268,7 @@ impl FilePicker {
         );
     }
 
-    fn adjust_scroll(&mut self, viewport_height: usize) {
+    const fn adjust_scroll(&mut self, viewport_height: usize) {
         if viewport_height == 0 {
             return;
         }
@@ -271,6 +276,8 @@ impl FilePicker {
             self.scroll_offset = self.cursor;
         } else if self.cursor >= self.scroll_offset + viewport_height {
             self.scroll_offset = self.cursor - viewport_height + 1;
+        } else {
+            // Cursor is within visible range, no scroll adjustment needed
         }
     }
 

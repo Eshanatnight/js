@@ -1,0 +1,113 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (example: v1.2.3)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build release assets (${{ matrix.name }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: linux
+          - os: windows-latest
+            name: windows
+          - os: macos-latest
+            name: macos
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo build artifacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release artifacts
+        run: cargo build --workspace --release --locked
+
+      - name: Run tests
+        run: cargo test --workspace --locked
+
+      - name: Package binary and FFI libs (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: |
+          set -euo pipefail
+          ARCHIVE="js-${{ matrix.name }}.zip"
+          rm -f "$ARCHIVE"
+          FILES=(
+            target/release/js
+          )
+
+          packaged=0
+          for file in "${FILES[@]}"; do
+            if [ -f "$file" ]; then
+              zip -j "$ARCHIVE" "$file"
+              packaged=$((packaged + 1))
+            fi
+          done
+
+          if [ "$packaged" -eq 0 ]; then
+            echo "No release files found to package." >&2
+            exit 1
+          fi
+
+      - name: Package binary and FFI libs (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $archive = "js-${{ matrix.name }}.zip"
+          if (Test-Path $archive) { Remove-Item $archive -Force }
+
+          $files = @(
+            "target\release\js.exe"
+          ) | Where-Object { Test-Path $_ }
+
+          if ($files.Count -eq 0) {
+            Write-Error "No release files found to package."
+            exit 1
+          }
+
+          Compress-Archive -Path $files -DestinationPath $archive -Force
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-${{ matrix.name }}
+          path: js-${{ matrix.name }}.zip
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download packaged artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Publish release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+          files: release-assets/**/*.zip
+          generate_release_notes: true
