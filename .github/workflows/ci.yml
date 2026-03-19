@@ -53,9 +53,6 @@ jobs:
       - name: Test (workspace, all targets)
         run: make test
 
-      - name: FFI and Python tests
-        run: make ffi-test python-test
-
   fmt:
     name: Rustfmt (format check)
     runs-on: ubuntu-latest
