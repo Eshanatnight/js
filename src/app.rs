@@ -1,4 +1,4 @@
-use std::time::Duration;
+use core::time::Duration;
 
 use anyhow::Result;
 use crossterm::event::{
@@ -85,14 +85,12 @@ impl App {
 
             KeyCode::Char('j') | KeyCode::Down => self.move_down(),
             KeyCode::Char('k') | KeyCode::Up => self.move_up(),
-            KeyCode::Char('g') => self.go_top(),
-            KeyCode::Char('G') => self.go_bottom(),
+            KeyCode::Char('g') | KeyCode::Home => self.go_top(),
+            KeyCode::Char('G') | KeyCode::End => self.go_bottom(),
             KeyCode::PageUp | KeyCode::Char('b') => self.page_up(20),
             KeyCode::PageDown | KeyCode::Char('f') => self.page_down(20),
-            KeyCode::Home => self.go_top(),
-            KeyCode::End => self.go_bottom(),
 
-            KeyCode::Enter | KeyCode::Char(' ') | KeyCode::Right | KeyCode::Char('l') => {
+            KeyCode::Enter | KeyCode::Char(' ' | 'l') | KeyCode::Right => {
                 self.toggle_or_expand();
             }
             KeyCode::Left | KeyCode::Char('h') => self.collapse_or_parent(),
@@ -150,17 +148,17 @@ impl App {
         }
     }
 
-    fn move_up(&mut self) {
+    const fn move_up(&mut self) {
         self.cursor = self.cursor.saturating_sub(1);
     }
 
-    fn move_down(&mut self) {
+    const fn move_down(&mut self) {
         if self.cursor + 1 < self.visible.len() {
             self.cursor += 1;
         }
     }
 
-    fn page_up(&mut self, amount: usize) {
+    const fn page_up(&mut self, amount: usize) {
         self.cursor = self.cursor.saturating_sub(amount);
     }
 
@@ -168,11 +166,11 @@ impl App {
         self.cursor = (self.cursor + amount).min(self.visible.len().saturating_sub(1));
     }
 
-    fn go_top(&mut self) {
+    const fn go_top(&mut self) {
         self.cursor = 0;
     }
 
-    fn go_bottom(&mut self) {
+    const fn go_bottom(&mut self) {
         self.cursor = self.visible.len().saturating_sub(1);
     }
 
@@ -199,6 +197,8 @@ impl App {
                         break;
                     }
                 }
+            } else {
+                // Node at root depth - already at top, no action
             }
         }
     }
@@ -218,8 +218,7 @@ impl App {
     pub fn current_path(&self) -> String {
         self.visible
             .get(self.cursor)
-            .map(|&idx| self.tree.get_path(idx))
-            .unwrap_or_else(|| "$".to_string())
+            .map_or_else(|| "$".to_string(), |&idx| self.tree.get_path(idx))
     }
 
     fn perform_search(&mut self) {
@@ -238,7 +237,7 @@ impl App {
         }
 
         if self.search_results.is_empty() {
-            self.status_message = format!("Pattern not found: {}", self.search_query);
+            self.status_message = format!("Pattern not found: {query}", query = self.search_query);
         } else {
             self.search_index = self
                 .search_results
@@ -246,12 +245,10 @@ impl App {
                 .position(|&r| r >= self.cursor)
                 .unwrap_or(0);
             self.cursor = self.search_results[self.search_index];
-            self.status_message = format!(
-                "[{}/{}] /{}",
-                self.search_index + 1,
-                self.search_results.len(),
-                self.search_query
-            );
+            let n = self.search_index + 1;
+            let total = self.search_results.len();
+            let query = &self.search_query;
+            self.status_message = format!("[{n}/{total}] /{query}");
         }
     }
 
@@ -261,12 +258,10 @@ impl App {
         }
         self.search_index = (self.search_index + 1) % self.search_results.len();
         self.cursor = self.search_results[self.search_index];
-        self.status_message = format!(
-            "[{}/{}] /{}",
-            self.search_index + 1,
-            self.search_results.len(),
-            self.search_query
-        );
+        let n = self.search_index + 1;
+        let total = self.search_results.len();
+        let query = &self.search_query;
+        self.status_message = format!("[{n}/{total}] /{query}");
     }
 
     fn prev_search_result(&mut self) {
@@ -279,15 +274,13 @@ impl App {
             self.search_index - 1
         };
         self.cursor = self.search_results[self.search_index];
-        self.status_message = format!(
-            "[{}/{}] /{}",
-            self.search_index + 1,
-            self.search_results.len(),
-            self.search_query
-        );
+        let n = self.search_index + 1;
+        let total = self.search_results.len();
+        let query = &self.search_query;
+        self.status_message = format!("[{n}/{total}] /{query}");
     }
 
-    pub fn adjust_scroll(&mut self, viewport_height: usize) {
+    pub const fn adjust_scroll(&mut self, viewport_height: usize) {
         if viewport_height == 0 {
             return;
         }
@@ -295,6 +288,8 @@ impl App {
             self.scroll_offset = self.cursor;
         } else if self.cursor >= self.scroll_offset + viewport_height {
             self.scroll_offset = self.cursor - viewport_height + 1;
+        } else {
+            // Cursor is within visible range, no scroll adjustment needed
         }
     }
 
@@ -344,7 +339,7 @@ impl App {
                 } else {
                     text.to_string()
                 };
-                self.status_message = format!("{}: {}", prefix, preview);
+                self.status_message = format!("{prefix}: {preview}");
             }
             Err(_) => {
                 self.status_message = "Failed to copy to clipboard".to_string();
@@ -355,6 +350,6 @@ impl App {
     fn expand_to_depth(&mut self, depth: usize) {
         self.tree.expand_to_depth(depth);
         self.refresh_visible();
-        self.status_message = format!("Expanded to depth {}", depth);
+        self.status_message = format!("Expanded to depth {depth}");
     }
 }

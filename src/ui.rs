@@ -86,7 +86,7 @@ fn draw_tree(f: &mut Frame, app: &mut App, area: Rect) {
     }
 }
 
-fn render_node<'a>(app: &'a App, line_index: usize, node_idx: usize) -> Line<'a> {
+fn render_node(app: &App, line_index: usize, node_idx: usize) -> Line<'_> {
     let node = &app.tree.nodes[node_idx];
     let is_selected = line_index == app.cursor;
     let is_search_hit = app.search_results.contains(&line_index);
@@ -106,12 +106,12 @@ fn render_node<'a>(app: &'a App, line_index: usize, node_idx: usize) -> Line<'a>
     if let Some(key) = &node.key {
         if node.is_array_element {
             spans.push(Span::styled(
-                format!("[{}]", key),
+                format!("[{key}]"),
                 Style::default().fg(CLR_DIM),
             ));
         } else {
             spans.push(Span::styled(
-                format!("\"{}\"", key),
+                format!("\"{key}\""),
                 Style::default().fg(CLR_KEY).add_modifier(Modifier::BOLD),
             ));
         }
@@ -128,7 +128,7 @@ fn render_node<'a>(app: &'a App, line_index: usize, node_idx: usize) -> Line<'a>
                     if node.expanded {
                         format!("{} field{}", n, if *n == 1 { "" } else { "s" })
                     } else {
-                        format!("…{}", n)
+                        format!("…{n}")
                     }
                 );
                 spans.push(Span::styled(summary, Style::default().fg(CLR_DIM)));
@@ -143,7 +143,7 @@ fn render_node<'a>(app: &'a App, line_index: usize, node_idx: usize) -> Line<'a>
                     if node.expanded {
                         format!("{} item{}", n, if *n == 1 { "" } else { "s" })
                     } else {
-                        format!("…{}", n)
+                        format!("…{n}")
                     }
                 );
                 spans.push(Span::styled(summary, Style::default().fg(CLR_DIM)));
@@ -153,12 +153,12 @@ fn render_node<'a>(app: &'a App, line_index: usize, node_idx: usize) -> Line<'a>
             let display = if s.len() > 120 {
                 format!("\"{}…\"", &s[..117])
             } else {
-                format!("\"{}\"", s)
+                format!("\"{s}\"")
             };
             spans.push(Span::styled(display, Style::default().fg(CLR_STRING)));
         }
         NodeKind::Number(n) => {
-            spans.push(Span::styled(n.to_string(), Style::default().fg(CLR_NUMBER)));
+            spans.push(Span::styled(n.clone(), Style::default().fg(CLR_NUMBER)));
         }
         NodeKind::Bool(b) => {
             spans.push(Span::styled(b.to_string(), Style::default().fg(CLR_BOOL)));
@@ -197,9 +197,9 @@ fn draw_path_bar(f: &mut Frame, app: &App, area: Rect) {
         .saturating_sub(right_len);
 
     let line = Line::from(vec![
-        Span::styled(format!(" {}", path_display), Style::default().fg(CLR_KEY)),
+        Span::styled(format!(" {path_display}"), Style::default().fg(CLR_KEY)),
         Span::raw(" ".repeat(padding)),
-        Span::styled(format!("{} ", node_count), Style::default().fg(CLR_DIM)),
+        Span::styled(format!("{node_count} "), Style::default().fg(CLR_DIM)),
     ]);
 
     f.render_widget(
@@ -252,8 +252,8 @@ fn draw_status_bar(f: &mut Frame, app: &App, area: Rect) {
 
 fn draw_help_popup(f: &mut Frame) {
     let area = f.area();
-    let popup_width = 48u16.min(area.width.saturating_sub(4));
-    let popup_height = 22u16.min(area.height.saturating_sub(4));
+    let popup_width = 48_u16.min(area.width.saturating_sub(4));
+    let popup_height = 22_u16.min(area.height.saturating_sub(4));
     let x = (area.width.saturating_sub(popup_width)) / 2;
     let y = (area.height.saturating_sub(popup_height)) / 2;
     let popup_area = Rect::new(x, y, popup_width, popup_height);
@@ -285,7 +285,7 @@ fn draw_help_popup(f: &mut Frame) {
         .map(|(key, desc)| {
             Line::from(vec![
                 Span::styled(
-                    format!("  {:18}", key),
+                    format!("  {key:18}"),
                     Style::default().fg(CLR_KEY).add_modifier(Modifier::BOLD),
                 ),
                 Span::styled(*desc, Style::default().fg(CLR_BAR_FG)),

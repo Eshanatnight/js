@@ -15,35 +15,31 @@ use crossterm::event::{DisableMouseCapture, EnableMouseCapture};
 static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
 
 fn main() -> Result<()> {
-    match read_input()? {
-        Some((json_str, filename)) => {
-            reattach_tty()?;
-            let tree = tree::JsonTree::from_str(&json_str).context("Failed to parse JSON")?;
-            let mut app = app::App::new(tree, filename);
+    if let Some((json_str, filename)) = read_input()? {
+        reattach_tty();
+        let tree = tree::JsonTree::from_str(&json_str).context("Failed to parse JSON")?;
+        let mut app = app::App::new(tree, filename);
 
-            let mut terminal = ratatui::init();
-            io::stdout().execute(EnableMouseCapture)?;
-            let result = app.run(&mut terminal);
-            io::stdout().execute(DisableMouseCapture).ok();
-            ratatui::restore();
-            result
-        }
-        None => {
-            let mut terminal = ratatui::init();
-            io::stdout().execute(EnableMouseCapture)?;
-            let result = run_with_picker(&mut terminal);
-            io::stdout().execute(DisableMouseCapture).ok();
-            ratatui::restore();
-            result
-        }
+        let mut terminal = ratatui::init();
+        io::stdout().execute(EnableMouseCapture)?;
+        let result = app.run(&mut terminal);
+        io::stdout().execute(DisableMouseCapture).ok();
+        ratatui::restore();
+        result
+    } else {
+        let mut terminal = ratatui::init();
+        io::stdout().execute(EnableMouseCapture)?;
+        let result = run_with_picker(&mut terminal);
+        io::stdout().execute(DisableMouseCapture).ok();
+        ratatui::restore();
+        result
     }
 }
 
 fn run_with_picker(terminal: &mut ratatui::DefaultTerminal) -> Result<()> {
     let mut fp = picker::FilePicker::new();
-    let path = match fp.run(terminal)? {
-        Some(p) => p,
-        None => return Ok(()),
+    let Some(path) = fp.run(terminal)? else {
+        return Ok(());
     };
 
     let (json_str, filename) = load_json_file(&path)?;
@@ -55,13 +51,13 @@ fn run_with_picker(terminal: &mut ratatui::DefaultTerminal) -> Result<()> {
 fn load_json_file(path: &PathBuf) -> Result<(String, String)> {
     let display = path.display().to_string();
     let content =
-        fs::read_to_string(path).with_context(|| format!("Failed to read file: {}", display))?;
+        fs::read_to_string(path).with_context(|| format!("Failed to read file: {display}"))?;
     Ok((content, display))
 }
 
 /// When stdin was a pipe (e.g. `cat file.json | json-tui`), crossterm can't
 /// enable raw mode on it. Re-open `/dev/tty` on fd 0 so the TUI works.
-fn reattach_tty() -> Result<()> {
+fn reattach_tty() {
     #[cfg(unix)]
     if !io::stdin().is_terminal() {
         use std::os::unix::io::AsRawFd;
@@ -71,7 +67,6 @@ fn reattach_tty() -> Result<()> {
             }
         }
     }
-    Ok(())
 }
 
 fn read_input() -> Result<Option<(String, String)>> {
@@ -80,7 +75,7 @@ fn read_input() -> Result<Option<(String, String)>> {
     if args.len() > 1 {
         let path = &args[1];
         let content =
-            fs::read_to_string(path).with_context(|| format!("Failed to read file: {}", path))?;
+            fs::read_to_string(path).with_context(|| format!("Failed to read file: {path}"))?;
         Ok(Some((content, path.clone())))
     } else if !io::stdin().is_terminal() {
         let mut buf = String::new();

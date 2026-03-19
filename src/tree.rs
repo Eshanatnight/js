@@ -23,7 +23,7 @@ pub struct TreeNode {
 }
 
 impl TreeNode {
-    pub fn is_expandable(&self) -> bool {
+    pub const fn is_expandable(&self) -> bool {
         match &self.kind {
             NodeKind::Object(n) | NodeKind::Array(n) => *n > 0,
             _ => false,
@@ -42,7 +42,7 @@ impl JsonTree {
         let mut de = serde_json::Deserializer::from_str(json);
         let root = TreeSeed::new(&mut nodes, None, 0, false).deserialize(&mut de)?;
         de.end()?;
-        Ok(JsonTree { nodes, root })
+        Ok(Self { nodes, root })
     }
 
     pub fn visible_lines(&self) -> Vec<usize> {
@@ -108,13 +108,13 @@ impl JsonTree {
                 child_node
                     .key
                     .as_ref()
-                    .map(|k| format!("[{}]", k))
+                    .map(|k| format!("[{k}]"))
                     .unwrap_or_default()
             } else {
                 child_node
                     .key
                     .as_ref()
-                    .map(|k| format!(".{}", k))
+                    .map(|k| format!(".{k}"))
                     .unwrap_or_default()
             };
             parts.push(part);
@@ -158,10 +158,10 @@ impl JsonTree {
         match &node.kind {
             NodeKind::Null => serde_json::Value::Null,
             NodeKind::Bool(b) => serde_json::Value::Bool(*b),
-            NodeKind::Number(n) => n
-                .parse::<serde_json::Number>()
-                .map(serde_json::Value::Number)
-                .unwrap_or_else(|_| serde_json::Value::String(n.clone())),
+            NodeKind::Number(n) => n.parse::<serde_json::Number>().map_or_else(
+                |_| serde_json::Value::String(n.clone()),
+                serde_json::Value::Number,
+            ),
             NodeKind::String(s) => serde_json::Value::String(s.clone()),
             NodeKind::Object(_) => {
                 let map = node
@@ -198,16 +198,16 @@ impl JsonTree {
     }
 }
 
-struct TreeSeed<'a> {
-    nodes: &'a mut Vec<TreeNode>,
+struct TreeSeed<'nodes> {
+    nodes: &'nodes mut Vec<TreeNode>,
     key: Option<String>,
     depth: usize,
     is_array_element: bool,
 }
 
-impl<'a> TreeSeed<'a> {
-    fn new(
-        nodes: &'a mut Vec<TreeNode>,
+impl<'nodes> TreeSeed<'nodes> {
+    const fn new(
+        nodes: &'nodes mut Vec<TreeNode>,
         key: Option<String>,
         depth: usize,
         is_array_element: bool,
@@ -234,7 +234,7 @@ impl<'a> TreeSeed<'a> {
     }
 }
 
-impl<'de, 'a> DeserializeSeed<'de> for TreeSeed<'a> {
+impl<'de> DeserializeSeed<'de> for TreeSeed<'_> {
     type Value = usize;
 
     fn deserialize<D: de::Deserializer<'de>>(self, deserializer: D) -> Result<usize, D::Error> {
@@ -242,7 +242,7 @@ impl<'de, 'a> DeserializeSeed<'de> for TreeSeed<'a> {
     }
 }
 
-impl<'de, 'a> Visitor<'de> for TreeSeed<'a> {
+impl<'de> Visitor<'de> for TreeSeed<'_> {
     type Value = usize;
 
     fn expecting(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -290,7 +290,7 @@ impl<'de, 'a> Visitor<'de> for TreeSeed<'a> {
             children: Vec::new(),
         });
         let mut children = Vec::with_capacity(seq.size_hint().unwrap_or(0));
-        let mut i = 0usize;
+        let mut i = 0_usize;
         while let Some(child) = seq.next_element_seed(TreeSeed::new(
             &mut *nodes,
             Some(i.to_string()),

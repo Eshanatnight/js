@@ -5,12 +5,7 @@ on:
     branches:
       - main
       - master
-      - develop
-      - "*"
   pull_request:
-
-permissions:
-  contents: read
 
 env:
   CARGO_TERM_COLOR: always
@@ -24,98 +19,80 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Rust toolchain
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Cache cargo registry + build
-        uses: actions/cache@v4
         with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+          components: clippy, rustfmt
 
-      - name: Cargo build (all targets, all features)
-        run: cargo build --all-targets --all-features
+      - name: Cache cargo build artifacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Cargo build (workspace, all targets)
+        run: cargo build --workspace --all-targets --locked
 
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Rust toolchain
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Restore cargo cache
-        uses: actions/cache@v4
         with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+          components: clippy, rustfmt
 
-      - name: Cargo test
-        run: cargo test --all-features
+      - name: Cache cargo build artifacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Test (workspace, all targets)
+        run: make test
+
+      - name: FFI and Python tests
+        run: make ffi-test python-test
 
   fmt:
-    name: Format check
+    name: Rustfmt (format check)
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Rust toolchain
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: rustfmt
+          components: clippy, rustfmt
 
-      - name: Restore cargo cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+      - name: Cache cargo build artifacts
+        uses: Swatinem/rust-cache@v2
 
-      - name: Cargo fmt check
+      - name: Check formatting with rustfmt
         run: cargo fmt --all -- --check
 
   clippy:
-    name: Lint (clippy)
+    name: Clippy (lint)
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Rust toolchain
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy
+          components: clippy, rustfmt
 
-      - name: Restore cargo cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+      - name: Cache cargo build artifacts
+        uses: Swatinem/rust-cache@v2
 
-      - name: Cargo clippy (deny warnings)
-        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Run clippy lints
+        run: make clippy
+
